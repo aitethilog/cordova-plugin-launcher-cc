@@ -1,0 +1,19 @@
+{
+  "name": "cordova-plugin-launcher-cc",
+  "version": "1.0.0",
+  "description": "A Cordova plugin that provides access to Android’s screen pinning APIs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aitethilog/cordova-plugin-launcher-cc.git"
+  },
+  "author": "ethilog",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aitethilog/cordova-plugin-launcher-cc/issues"
+  },
+  "homepage": "https://github.com/aitethilog/cordova-plugin-launcher-cc#readme"
+}
