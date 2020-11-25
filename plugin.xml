@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-launcher-cc"
+        version="1.0.0">
+  <name>Launcher</name>
+  <description>A Cordova plugin that provides access to Android’s screen pinning APIs.</description>
+  <keywords>cordova,android,screen pinning,startLauncher,stopLauncher,lollipop,api 21</keywords>
+  <license>MIT</license>
+  <engines>
+    <engine name="cordova" version=">=3.0.0"/>
+  </engines>
+  <js-module src="www/Launcher.js" name="Launcher">
+    <clobbers target="plugins.launcher" />
+  </js-module>
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="Launcher">
+        <param name="android-package" value="com.oddmouse.plugins.Launcher" />
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+	
+	<config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <activity android:name="com.oddmouse.plugins.LauncherActivity" />
+      <activity-alias
+        android:name="LauncherAlias1"
+        android:targetActivity="MainActivity" >
+        <intent-filter>
+          <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+      </activity-alias>
+
+      <activity-alias
+        android:name="LauncherAlias2"
+        android:enabled="false"
+        android:targetActivity="MainActivity" >
+        <intent-filter>
+          <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+      </activity-alias>
+    </config-file>
+
+    <config-file target="AndroidManifest.xml" parent="/manifest">
+      <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+      <uses-permission android:name="android.permission.REORDER_TASKS"/>
+      <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+      <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+      <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    </config-file>
+
+    <source-file src="src/android/com/oddmouse/plugins/LauncherActivity.java" target-dir="src/com/oddmouse/plugins" />
+    <source-file src="src/android/com/oddmouse/plugins/Launcher.java" target-dir="src/com/oddmouse/plugins"/>
+  </platform>
+</plugin>
